@@ -186,7 +186,7 @@ function dntheme_scripts() {
     // wp_enqueue_script('fancybox-v4',get_theme_file_uri('/assets/libs/fancybox-v4/fancybox.umd.js'), array(), '', true );
 
 
-    wp_enqueue_script('dnmain',get_theme_file_uri('/assets/js/main.js'), array(), '', true );
+    wp_enqueue_script('dnmain',get_theme_file_uri('/assets/js/main.js'), array('jquery', 'wow'), '', true );
 
     // Theme stylesheet.
     wp_enqueue_style( 'dn-style', get_stylesheet_uri() );
@@ -365,20 +365,6 @@ function get_post_loadmore() {
 }
 
 
-add_filter( 'wp_nav_menu_items', 'your_custom_menu_item', 10, 2 );
-function your_custom_menu_item ( $items, $args ) {
-    if ($args->theme_location == 'primary') {
-        $items .='<li class="menu-search-item"><div class="header__search--click">
-    <div class="search__btn"><i class="fa fa-search" aria-hidden="true"></i></div>
-    <div class="header__search-content">
-    <form role="search" method="get" class="search__form" action="/">
-        <input type="search" class="search-field" placeholder="Nhập từ khóa cần tìm …" value="" name="s" autocomplete="new-password">
-        <button class="search-submit" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
-    </form>
-</div></div></li>';
-    }
-    return $items;
-}
 if ( wp_get_environment_type() === 'local' ) {
     add_filter( 'wp_get_attachment_url', function( $url ) {
         $local_uploads = wp_upload_dir()['baseurl'];
@@ -388,4 +374,13 @@ if ( wp_get_environment_type() === 'local' ) {
         }
         return $url;
     });
+}
+
+// Add custom class 'dn__menu-item' to wp_nav_menu items
+add_filter('nav_menu_css_class', 'skyqueen_add_menu_item_class', 10, 4);
+function skyqueen_add_menu_item_class($classes, $item, $args, $depth) {
+    if ($args->theme_location == 'primary') {
+        $classes[] = 'dn__menu-item';
+    }
+    return $classes;
 }
