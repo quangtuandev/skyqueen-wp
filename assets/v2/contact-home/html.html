@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Alignment Grid Overlay Demo</title>
+    <style>
+        :root {
+            --line-color: rgba(255, 255, 255, 0.55);
+            --dot-color: #2b4c9b;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #0a2a52;
+        }
+
+        /* ==== Khu vực bố cục mẫu (giống ảnh bạn gửi) ==== */
+        .stage {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            background: linear-gradient(120deg, rgba(0, 40, 90, .55), rgba(0, 60, 120, .25)), url("https://images.unsplash.com/photo-1494412651409-8963ce7935a7?q=80&w=1600") center/cover;
+        }
+
+        .form-box {
+            position: absolute;
+            top: 12%;
+            left: 4%;
+            width: 34%;
+            height: 76%;
+            background: rgba(30, 70, 150, 0.55);
+            color: #fff;
+            padding: 40px;
+        }
+
+        .form-box h2 {
+            margin: 0 0 6px;
+            font-size: 14px;
+            letter-spacing: 2px;
+        }
+
+        .form-box h1 {
+            margin: 0 0 30px;
+            font-size: 34px;
+        }
+
+        .cta {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            padding: 18px;
+            background: #e6483c;
+            color: #fff;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .brand-card {
+            position: absolute;
+            right: 4%;
+            bottom: 8%;
+            width: 24%;
+            background: #fff;
+            padding: 16px 20px;
+        }
+
+        .brand-card h3 {
+            margin: 0 0 4px;
+            color: #1f3f8f;
+        }
+
+        .brand-card p {
+            margin: 0;
+            color: #555;
+            font-size: 13px;
+        }
+
+        /* ==== Overlay lưới ==== */
+        #gridOverlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            /* để không chặn click vào element thật */
+        }
+
+        .toggle-btn {
+            position: fixed;
+            top: 16px;
+            right: 16px;
+            z-index: 10;
+            padding: 8px 14px;
+            background: #1f3f8f;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 13px;
+        }
+    </style>
+</head>
+
+<body> <button class="toggle-btn" onclick="toggleGrid()">Ẩn/Hiện lưới</button>
+    <div class="stage" id="stage">
+        <div class="form-box" data-grid>
+            <h2>■ LIÊN HỆ</h2>
+            <h1>TƯ VẤN MIỄN PHÍ NGAY</h1>
+            <div class="cta" data-grid>GỬI NGAY →</div>
+        </div>
+        <div class="brand-card" data-grid>
+            <h3>SKY QUEEN</h3>
+            <p>Chuyên Nghiệp · Tận Tâm · Tin Cậy · Hiệu Quả</p>
+        </div> <svg id="gridOverlay"></svg>
+    </div>
+    <script> /*   Nguyên lý:   1. Lấy getBoundingClientRect() của các element cần "bắt lưới" (đánh dấu data-grid).   2. Với mỗi element, vẽ 1 đường ngang qua top & bottom, 1 đường dọc qua left & right,      kéo dài hết chiều rộng/cao của stage — giống hiệu ứng "smart guide" trong Figma.   3. Tại các điểm giao nhau ở góc element, vẽ thêm ô vuông nhỏ (marker) như trong ảnh gốc.   4. Dùng SVG vì dễ vẽ line/rect chính xác theo toạ độ px và không ảnh hưởng layout thật (pointer-events:none). */  function drawAlignmentGrid() { const stage = document.getElementById('stage'); const svg = document.getElementById('gridOverlay'); const stageRect = stage.getBoundingClientRect(); svg.setAttribute('viewBox', `0 0 ${stageRect.width} ${stageRect.height}`); svg.innerHTML = ''; // reset    const xs = new Set();   const ys = new Set();    document.querySelectorAll('[data-grid]').forEach(el=>{     const r = el.getBoundingClientRect();     // toạ độ tương đối so với stage     xs.add(r.left - stageRect.left);     xs.add(r.right - stageRect.left);     ys.add(r.top - stageRect.top);     ys.add(r.bottom - stageRect.top);   });    // vẽ đường dọc   xs.forEach(x=>{     svg.appendChild(makeLine(x, 0, x, stageRect.height));   });   // vẽ đường ngang   ys.forEach(y=>{     svg.appendChild(makeLine(0, y, stageRect.width, y));   });    // vẽ marker vuông nhỏ tại mọi giao điểm x,y   xs.forEach(x=>{     ys.forEach(y=>{       svg.appendChild(makeDot(x, y));     });   }); }  function makeLine(x1,y1,x2,y2){   const line = document.createElementNS('http://www.w3.org/2000/svg','line');   line.setAttribute('x1', x1);   line.setAttribute('y1', y1);   line.setAttribute('x2', x2);   line.setAttribute('y2', y2);   line.setAttribute('stroke', 'rgba(255,255,255,0.5)');   line.setAttribute('stroke-width', '1');   return line; }  function makeDot(x,y){   const size = 8;   const rect = document.createElementNS('http://www.w3.org/2000/svg','rect');   rect.setAttribute('x', x - size/2);   rect.setAttribute('y', y - size/2);   rect.setAttribute('width', size);   rect.setAttribute('height', size);   rect.setAttribute('fill', '#2b4c9b');   return rect; }  function toggleGrid(){   const svg = document.getElementById('gridOverlay');   svg.style.display = svg.style.display === 'none' ? 'block' : 'none'; }  window.addEventListener('load', drawAlignmentGrid); window.addEventListener('resize', drawAlignmentGrid); </script>
+</body>
+
+</html>

@@ -38,7 +38,7 @@ $logo_black = get_field('logo_black', 'option');
 
 </head>
 
-<body <?php body_class(); ?>>
+<body <?php body_class('background-main'); ?>>
   <div id="fb-root"></div>
   <?php wp_body_open(); ?>
   <div class="wrapper">

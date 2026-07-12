@@ -2,31 +2,10 @@ jQuery(function ($) {
 
     if ($('body').hasClass("home")) {
         new Swiper(".swiper-testimonials", {
-            slidesPerView: 1,
-            spaceBetween: 30,
-            autoHeight: true,
-            breakpoints: {
-                1200: {
-                    autoHeight: false,
-                    slidesPerView: 2,
-                    spaceBetween: 20
-                },
-            },
-        });
-        new Swiper(".swiper-news", {
-            loop: true,
-            slidesPerView: 1,
-            spaceBetween: 10,
-            navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
-              },
-            breakpoints: {
-                1200: {
-                    slidesPerView: 3,
-                    spaceBetween: 30
-                },
-            }
+            slidesPerView: 'auto',
+            spaceBetween: 20,
+            freeMode: true,
+            grabCursor: true,
         });
 
         new Swiper(".swiper-about", {

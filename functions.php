@@ -366,13 +366,39 @@ function get_post_loadmore() {
 
 
 if ( wp_get_environment_type() === 'local' ) {
-    add_filter( 'wp_get_attachment_url', function( $url ) {
-        $local_uploads = wp_upload_dir()['baseurl'];
-        $file_path = str_replace( $local_uploads, wp_upload_dir()['basedir'], $url );
-        if ( ! file_exists( $file_path ) ) {
-            return str_replace( $local_uploads, 'https://skyqueen.vn/wp-content/uploads', $url );
+    // Helper: redirect missing local uploads to production
+    function skyqueen_fallback_upload_url( $url ) {
+        if ( empty( $url ) ) return $url;
+        $upload_dir = wp_upload_dir();
+        $local_base = $upload_dir['baseurl'];
+        $local_path = str_replace( $local_base, $upload_dir['basedir'], $url );
+        if ( ! file_exists( $local_path ) ) {
+            return str_replace( $local_base, 'https://skyqueen.vn/wp-content/uploads', $url );
         }
         return $url;
+    }
+
+    // 1. wp_get_attachment_url
+    add_filter( 'wp_get_attachment_url', 'skyqueen_fallback_upload_url' );
+
+    // 2. wp_get_attachment_image_src (array: [url, width, height, is_intermediate])
+    add_filter( 'wp_get_attachment_image_src', function( $image ) {
+        if ( is_array( $image ) && ! empty( $image[0] ) ) {
+            $image[0] = skyqueen_fallback_upload_url( $image[0] );
+        }
+        return $image;
+    });
+
+    // 3. srcset — fallback từng URL trong responsive images
+    add_filter( 'wp_calculate_image_srcset', function( $sources ) {
+        if ( is_array( $sources ) ) {
+            foreach ( $sources as &$source ) {
+                if ( ! empty( $source['url'] ) ) {
+                    $source['url'] = skyqueen_fallback_upload_url( $source['url'] );
+                }
+            }
+        }
+        return $sources;
     });
 }
 
