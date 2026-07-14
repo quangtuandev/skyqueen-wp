@@ -1,5 +1,5 @@
 /*
-Theme Name: skyqueen
+Theme Name: Near - Make tech near you
 Author: wordpress.org
 Author URI: https://wordpress.org
 Description: Dntheme brings your site to life with header video and immersive featured images.
@@ -15,6 +15,8 @@ Tags: best theme
 */
 @import url('./assets/fonts/icomoon/style.css');
 @import url('./assets/v2/icomoon/style.css');
+@import url('./assets/v2/about-us.css');
+
 :root {
     --font-family-display: 'Inter', sans-serif;
 }
@@ -125,7 +127,17 @@ display: none;
 .header__top{background-color:rgba(255,255,255,0.15);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);color:#fff;padding:2px 0px;font-size:13px;border-bottom:1px solid rgba(255,255,255,0.2);}
 .header__top a{color:#fff}
 .header{position:relative;left:0;width:100%;z-index:999;background:rgba(255,255,255,0.15);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);top:0;-webkit-transition:all .5s;-o-transition:all .5s;transition:all .5s;}
-body:not(.home) .header{box-shadow:3px 3px 4px rgba(0,0,0,0.1);}
+body:not(.home) .header{box-shadow:none;background:rgba(255,255,255,0.98);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);}
+body:not(.home) .header__top{background-color:rgba(255,255,255,0.98);color:#334155;border-bottom-color:rgba(0,0,0,0.05);}
+body:not(.home) .header__top a{color:#334155;}
+body:not(.home) .logo img.logo-white{display:none!important;}
+body:not(.home) .logo img.logo-black{display:block!important;}
+/* body:not(.home) .header__brand{border-right-color:rgba(0,0,0,0.05);} */
+body:not(.home) .sc__wrap{border-color:rgba(0,0,0,0.05);}
+body:not(.home) .main__nav ul.dn__menu>li{border-right-color:rgba(0,0,0,0.05);}
+body:not(.home) .main__nav ul.dn__menu>li>a{color:#334155;}
+body:not(.home) .main__nav ul.dn__menu ul.sub-menu{background:rgba(255,255,255,0.98);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);border:1px solid rgba(0,0,0,0.05);}
+body:not(.home) .main__nav ul.dn__menu ul.sub-menu li a{color:#334155;}
 .logo{margin:0;display:flex;align-items:center;height:100%;}
 .logo img.logo-white,
 .logo img.logo-black {
@@ -148,7 +160,8 @@ body:not(.home) .logo img.logo-white {
 body:not(.home) .logo img.logo-black {
     display:block;
 }
-.header.is-sticky{box-shadow:0px 0px 10px 0px rgba(0,0,0,0.05);top:0;position:fixed;left:0;right:0;margin:0 auto;animation:stuckMoveDown .6s;background:rgba(255,255,255,0.98);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);}
+.header.is-sticky{box-shadow:0px 0px 10px 0px rgba(0,0,0,0.05);top:0;position:fixed;left:0;right:0;margin:0 auto;animation:stuckMoveDown .6s;background:rgba(255,255,255,0.98);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);transition:transform 0.35s ease;}
+.header.is-hidden{transform:translateY(-100%);box-shadow:none;}
 .header.is-sticky .logo img.logo-white {
     display:none!important;
 }
@@ -164,7 +177,7 @@ body:not(.home) .logo img.logo-black {
 /**/
 .header__gtranslate{min-width:84px;}
 .gtranslate_wrapper .gt_float_switcher{background-color:transparent!important;border-radius:8px!important;box-shadow:none!important;font-size:16px!important;height:37px;display:flex;align-items:center;}
-.gtranslate_wrapper .gt_options{position:absolute!important;width:200px;right:0;top:100%;background:#FFF;box-shadow:3px 3px 6px 1px #ccc;border-radius:4px;font-size:14px;}
+.gtranslate_wrapper .gt_options{position:absolute!important;width:200px;right:0;top:100%;background:#FFF;font-size:14px;}
 .gtranslate_wrapper .gt_float_switcher .gt_options a{padding:6px 12px;}
 .gtranslate_wrapper .gt_float_switcher .gt-selected .gt-current-lang{padding:0!important;}
 .gtranslate_wrapper .gt_float_switcher img{width:28px!important;height: 28px;margin: 0;object-fit: cover;border-radius: 50%;}
@@ -173,8 +186,11 @@ body:not(.home) .logo img.logo-black {
 .gt_float_switcher .gt-selected .gt-current-lang span.gt_float_switcher-arrow {
     width: 24px!important;
 }
-.top_show .gt_float_switcher .gt-selected .gt-current-lang span.gt_float_switcher-arrow {
+.gt_float_switcher .gt-selected .gt-current-lang span.gt_float_switcher-arrow {
     background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 285 285'><path d='M282 76.5l-14.2-14.3a9 9 0 0 0-13.1 0L142.5 174.4 30.3 62.2a9 9 0 0 0-13.2 0L3 76.5a9 9 0 0 0 0 13.1l133 133a9 9 0 0 0 13.1 0l133-133a9 9 0 0 0 0-13z' style='fill:%23E2E8F0'/></svg>")!important;
+}
+.header.is-sticky .gt_float_switcher .gt-selected .gt-current-lang span.gt_float_switcher-arrow {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 285 285'><path d='M282 76.5l-14.2-14.3a9 9 0 0 0-13.1 0L142.5 174.4 30.3 62.2a9 9 0 0 0-13.2 0L3 76.5a9 9 0 0 0 0 13.1l133 133a9 9 0 0 0 13.1 0l133-133a9 9 0 0 0 0-13z' style='fill:%23666'/></svg>")!important;
 }
 /*
 ======================================
@@ -199,12 +215,13 @@ body:not(.home) .logo img.logo-black {
 */
 .sc__wrap{border:1px solid rgba(255,255,255,0.2);min-height:80px;}
 .header.is-sticky .sc__wrap{border-color:rgba(0,0,0,0.05);}
-.header__brand{display:flex;align-items:center;padding:10px 25px;border-right:1px solid rgba(255,255,255,0.2);}
-.header.is-sticky .header__brand{border-right-color:rgba(0,0,0,0.05);}
-.main__nav{z-index:9;position:relative;padding:0 0;display:flex;align-items:stretch;}
+.header__brand{display:flex;align-items:center;padding:10px 25px;}
+.main__nav ul.dn__menu>li:first-child{border-left: 1px solid rgba(255,255,255,0.2);}
+/* .header.is-sticky .header__brand{border-right-color:rgba(0,0,0,0.05);} */
+.main__nav{z-index:9;position:relative;padding:0 0;display:flex;align-items:stretch;flex:1;}
 .main__nav:after{content:"";display:table;clear:both;}
 .main__nav ul{list-style:none;padding:0;margin:0;}
-.main__nav ul.dn__menu{display:flex;align-items:stretch;gap:0;padding:0;margin:0;}
+.main__nav ul.dn__menu{display:flex;align-items:stretch;gap:0;padding:0;margin:0;flex:1;justify-content:center;}
 .main__nav ul.dn__menu:after{content:"";display:table;clear:both;}
 .main__nav ul.dn__menu>li{position:relative;display:flex;align-items:stretch;border-radius:0;border-right:1px solid rgba(255,255,255,0.2);}
 .header.is-sticky .main__nav ul.dn__menu>li{border-right-color:rgba(0,0,0,0.05);}
@@ -227,7 +244,7 @@ body:not(.home) .logo img.logo-black {
 .header.is-sticky .header__search--click .search__btn i{color:#1a1a1a!important;}
 .header__gtranslate{display:flex;align-items:center;justify-content:center;padding:0 25px;min-width:unset;}
 .dn__menu-item {
-    border: 1px solid #64748B1F;
+    border: none;
     position: relative;
     overflow: hidden;
     z-index: 1;
@@ -242,6 +259,9 @@ body:not(.home) .logo img.logo-black {
     background-color: #334155;
     z-index: 3; /* Keep the corner square on top */
     transition: background-color 0.3s;
+}
+.dn__menu-item:hover:before {
+    background-color: #233D9B;
 }
 .dn__menu-item::after {
     content: "";
@@ -264,13 +284,15 @@ body:not(.home) .logo img.logo-black {
 header.is-sticky .dn__menu-item::before {
     background-color: #CBD5E1;
 }
+header.is-sticky .dn__menu-item:hover::before,
 .main__nav .dn__menu>li.current_page_item.dn__menu-item::before {
     background-color: #233D9B;
+    transition: all 0.1s ease-in-out;
 }
 .main__nav .dn__menu>li.current_page_item>a::after{
     content: "";
     border-bottom: 2px solid #233D9B;
-    bottom: -2px;
+    bottom: 0px;
     position: absolute;
     left: 0;
     width: 100%;
@@ -351,7 +373,7 @@ section.slider{position:relative;}
     position: -webkit-sticky;
     position: sticky;
     top: 0;
-    z-index: 1;
+    z-index: 2;
 }
 .home-content-wrap {
     position: relative;
@@ -2063,7 +2085,6 @@ a.product__call.--addProduct{background:#ff5d00;color:#fff;border-color:#ff5d00;
 /* Left Dynamic Illustration Wrapper */
 .services__image-wrapper {
   position: relative;
-  border-radius: 8px;
   overflow: hidden;
 }
 .services__bg-pattern {
@@ -2147,14 +2168,12 @@ a.product__call.--addProduct{background:#ff5d00;color:#fff;border-color:#ff5d00;
   width: 100%;
 }
 .services-accordion-icon {
-  font-size: 24px;
+  font-size: 28px;
   color: #64748B;
   transition: color 0.3s ease;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
 }
 .services-accordion-item.active .services-accordion-icon {
   color: #233D9B;
@@ -2277,7 +2296,7 @@ a.product__call.--addProduct{background:#ff5d00;color:#fff;border-color:#ff5d00;
    ========================================================================== */
 
 .footer-new {
-  background-color: #1a358c; /* Deep rich blue similar to layout */
+  background-color: #1a358c;
   color: #ffffff;
   font-family: 'Inter', sans-serif;
   overflow: hidden;

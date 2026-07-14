@@ -1,0 +1,315 @@
+/*
+======================================
+[ About Us Page Sections ]
+======================================
+*/
+.about-us-page-wrap {
+  background-color: #F8FAFC;
+}
+
+.about-us-page-wrap .section-title {
+  font-size: 24px;
+  line-height: 32px;
+}
+
+.about-us-page-wrap .services-accordion-title {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 28px;
+  color: #1E293B;
+}
+
+.about-us-page-wrap .services-accordion-item.active .services-accordion-title {
+  color: #233D9B;
+  font-weight: 400;
+
+}
+
+
+.about-hero__tagline {
+
+  font-size: 18px;
+  line-height: 1.7;
+  color: #334155 !important;
+}
+
+.about-hero__illustration img {
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+}
+
+/* Overview */
+.about-overview__subtitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: #233D9B;
+  letter-spacing: 0.1em;
+}
+
+.about-overview__title {
+  font-size: 32px;
+  color: #0F172A !important;
+}
+
+.about-overview__highlight {
+  background-color: #EFF6FF;
+  border-left: 4px solid #233D9B;
+  transition: transform 0.3s ease;
+}
+
+.about-overview__highlight:hover {
+  transform: scale(1.02);
+}
+
+.about-overview__highlight-text {
+
+  color: #1E3A8A;
+  font-size: 16px;
+}
+
+/* Info Cards */
+.about-info {
+  background-color: #F1F5F9;
+}
+
+.about-info-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: none !important;
+}
+
+.about-info-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08) !important;
+}
+
+.about-info-card__icon-wrap {
+  width: 56px;
+  height: 56px;
+  background-color: #233D9B;
+  /* Solid primary blue */
+}
+
+.about-info-card__icon-wrap span {
+  color: #FFFFFF;
+  /* White icon */
+}
+
+.about-info-card__title {
+  font-family: var(--font-family-display, 'Inter', sans-serif);
+  font-size: 18px;
+  color: #020617 !important;
+  line-height: 28px;
+  font-weight: 500;
+  letter-spacing: 0%;
+  font-style: normal;
+}
+
+.about-info-card__list {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #1E293B;
+}
+
+.about-info-card__list li {
+  height: 40px;
+  margin-bottom: 8px;
+}
+
+.about-info-card__list span {
+  color: #475569;
+}
+
+.bullet-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background-color: #94A3B8;
+  /* Light gray-blue dot */
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.info-label {
+  color: #64748B;
+  /* Gray text label */
+  font-weight: 400;
+}
+
+.info-value {
+  color: #0F172A;
+  /* Dark text value */
+  font-weight: 400;
+}
+
+/* Business Fields */
+.about-fields__item {
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: none !important;
+}
+
+.about-fields__item:hover {
+  transform: translateX(4px);
+}
+
+.about-fields__item.active {
+  background-color: #EFF6FF !important;
+  box-shadow: 0 4px 12px rgba(35, 61, 155, 0.06);
+}
+
+.about-fields__item.active .about-fields__item-text {
+  color: #233D9B !important;
+}
+
+.about-fields__item.active span[class^="icon-"] {
+  color: #233D9B !important;
+}
+
+.about-fields__banner img {
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+}
+.about-vm {
+  position: relative;
+}
+.about-vm_background {
+  position: absolute;
+  top: 0;
+}
+.about-vm_background.is-vm-bg-pinned {
+  position: sticky !important;
+}
+
+.about-vm .container-xxl {
+  position: relative;
+  z-index: 1;
+}
+.about-vm__subtitle {
+  font-size: 14px;
+  letter-spacing: 0.15em;
+  color: #60A5FA !important;
+}
+
+.about-vm__title {
+  font-size: 32px;
+}
+
+.about-vm__img {
+  --bs-aspect-ratio: 80%;
+}
+
+.about-vm__img img {
+  transition: transform 0.5s ease;
+}
+
+.about-vm__img:hover img {
+  transform: scale(1.03);
+}
+
+.about-vm__card {
+  border: none;
+  background-color: #ffffff !important;
+  transition: all 0.3s ease;
+}
+
+.about-vm__card-icon {
+  background-color: #233D9B !important;
+}
+
+.about-vm__card-title {
+
+  font-size: 22px;
+  color: #0F172A !important;
+}
+
+.about-vm__card-text {
+  font-size: 15px;
+}
+
+@media (max-width: 767.98px) {
+  .about-hero__tagline {
+    font-size: 16px;
+  }
+
+  .about-overview__title,
+  .about-vm__title {
+    font-size: 26px;
+  }
+
+  .about-vm__img img {
+    height: 240px !important;
+  }
+}
+
+.vision-mission-card {
+  background-color: #ffffff !important;
+  padding: 16px;
+}
+
+@media (min-width: 768px) {
+  .about-vm__blocks {
+    position: relative;
+    padding-bottom: 80vh;
+  }
+
+  .about-vm .row.justify-content-center {
+    position: -webkit-sticky !important;
+    position: sticky !important;
+    top: 100px !important;
+    z-index: 10;
+    transition: top 0.3s ease;
+  }
+
+  .header.is-hidden ~ .about-us-page-wrap .about-vm .row.justify-content-center {
+    top: 20px !important;
+  }
+
+  .vision-mission-card {
+    position: -webkit-sticky !important;
+    position: sticky !important;
+    top: 230px !important;
+    background-color: #ffffff !important;
+    box-shadow: 0 -15px 30px -15px rgba(0, 0, 0, 0.12),
+                0 15px 30px -15px rgba(0, 0, 0, 0.12);
+    transition: top 0.3s ease;
+  }
+
+  .header.is-hidden ~ .about-us-page-wrap .vision-mission-card {
+    top: 140px !important;
+  }
+
+  .vision-mission-card:nth-child(1) {
+    z-index: 1;
+  }
+
+  .vision-mission-card:nth-child(2) {
+    z-index: 2;
+  }
+
+  .vision-mission-card:nth-child(3) {
+    z-index: 3;
+  }
+}
+
+/* Custom positioning for swiper vertical pagination in About Us business fields */
+.about-fields .services-swiper-container {
+  padding-left: 0 !important;
+  padding-right: 24px !important;
+}
+
+.about-fields .swiper-services-pagination {
+  left: auto !important;
+  right: 0 !important;
+}
+
+/* Vision & Mission SVG Grid Overlay */
+.about-vm__grid-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}

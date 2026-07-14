@@ -24,7 +24,7 @@ $the_query = new WP_Query($args);
   <div class="container-xxl">
 
     <!-- Header: Subtitle + Title bên trái, Arrows bên phải -->
-    <div class="news-header">
+    <div class="news-header wow fadeInUp" data-wow-delay="0.1s">
       <div class="news-header__text">
         <span class="services__subtitle text-uppercase mb-2">
           <span class="services__bullet"></span>Quy trình nhập khẩu
@@ -42,7 +42,7 @@ $the_query = new WP_Query($args);
     </div>
 
     <!-- Swiper Carousel -->
-    <div class="swiper swiper-news-v2">
+    <div class="swiper swiper-news-v2 wow fadeInUp" data-wow-delay="0.3s">
       <div class="swiper-wrapper">
         <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
           <div class="swiper-slide">

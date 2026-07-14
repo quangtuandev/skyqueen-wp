@@ -82,7 +82,6 @@ $theme_uri = get_template_directory_uri();
 
 <section class="home-services pt-5 pb-5 position-relative" id="services">
   <div class="container-xxl">
-    
     <!-- Section Header (Centered) -->
     <div class="row justify-content-center">
       <div class="col-lg-8 text-center z-1">

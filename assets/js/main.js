@@ -36,6 +36,7 @@ jQuery(function ($) {
     // =========================
 
     // Custom function which toggles between sticky class (is-sticky)
+    var lastScrollTop = 0;
     var stickyToggle = function (sticky, stickyWrapper, scrollElement, stickyHeight) {
         var stickyTop = stickyWrapper.offset().top;
         var scrollTop = scrollElement.scrollTop();
@@ -51,11 +52,20 @@ jQuery(function ($) {
         if (triggerSticky) {
             stickyWrapper.height(stickyHeight);
             sticky.addClass("is-sticky");
+
+            // Cuộn xuống → ẩn, vuốt lên → hiện
+            if (scrollTop > lastScrollTop && scrollTop > 200) {
+                sticky.addClass("is-hidden");
+            } else {
+                sticky.removeClass("is-hidden");
+            }
         }
         else {
-            sticky.removeClass("is-sticky");
+            sticky.removeClass("is-sticky is-hidden");
             stickyWrapper.height('auto');
         }
+
+        lastScrollTop = scrollTop;
     };
     $('[data-toggle="sticky-onscroll"]').each(function () {
         var sticky = $(this);
@@ -282,8 +292,9 @@ jQuery(function ($) {
         }
 
         var newImage = $item.attr('data-image');
+        var folder = $item.attr('data-folder') || 'services';
         var themeUri = window.themeUri || '/wp-content/themes/skyqueen';
-        var newSrc = themeUri + '/assets/v2/services/' + newImage;
+        var newSrc = themeUri + '/assets/v2/' + folder + '/' + newImage;
 
         var $illustration = $('#service-illustration');
         $illustration.addClass('fade-out');

@@ -46,11 +46,11 @@ $logo_black = get_field('logo_black', 'option');
       <div class="header__top mb-3">
         <div class="mx-4 d-flex">
           <div class="d-flex align-items-center gap-1 gap-xxl-3">
-            <div class="header__slogan fw-bold"><?= $slogan ?></div>
-            <div class="header__address d-none d-xl-block"><i class="fa fa-map-marker" aria-hidden="true"></i>
+            <div class="header__slogan "><i class=" icon-globe-03"></i> <?= $slogan ?></div>
+            <div class="header__address d-none d-xl-block"><i class="icon-target_Icon" aria-hidden="true"></i>
               <?= $address_short ?></div>
             <div class="header__phone d-none d-xl-block">
-              <i class="fa fa-phone" aria-hidden="true"></i>
+              <i class="icon-phone-02" aria-hidden="true"></i>
               <a href="tel:<?= dntheme_just_number($phone) ?>"><?= $phone ?></a>
               <?php if ($phone2): ?>
                 -
@@ -59,17 +59,17 @@ $logo_black = get_field('logo_black', 'option');
             </div>
             <?php if ($whatsapp): ?>
               <a href="https://wa.me/<?= $whatsapp ?>" class="header__whatsapp d-none d-xl-block"><span><i
-                    class="fa fa-whatsapp" aria-hidden="true"></i> Whatsapp: </span><?= $whatsapp ?></a>
+                    class="icon-whatsapp" aria-hidden="true"></i> Whatsapp: </span><?= $whatsapp ?></a>
             <?php endif; ?>
           </div>
           <div class="ms-auto d-none d-md-block">
             <div class="social__box -s1 ml-auto">
-              <a href="<?= $facebook ?>" target="_blank"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
-              <a href="<?= $instagram ?>" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-              <a href="<?= $email ?>" target="_blank"><i class="fa fa-envelope-o" aria-hidden="true"></i></a>
-              <a href="<?= dntheme_remove_space($phone) ?>" target="_blank"><i class="fa fa-phone"
+              <a href="<?= $facebook ?>" target="_blank"><i class="icon-facebook" aria-hidden="true"></i></a>
+              <a href="<?= $instagram ?>" target="_blank"><i class="icon-instagram" aria-hidden="true"></i></a>
+              <a href="<?= $email ?>" target="_blank"><i class="icon-envelope" aria-hidden="true"></i></a>
+              <a href="<?= dntheme_remove_space($phone) ?>" target="_blank"><i class="icon-phone-call"
                   aria-hidden="true"></i></a>
-              <a href="<?= $youtube ?>" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+
             </div>
           </div>
         </div>
