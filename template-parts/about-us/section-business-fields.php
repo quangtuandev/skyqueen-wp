@@ -89,7 +89,7 @@ $theme_uri = get_template_directory_uri();
 <!-- Pass WordPress directory dynamically to Javascript -->
 <script>window.themeUri = "<?php echo esc_js($theme_uri); ?>";</script>
 
-<section class="about-fields pt-5 pb-5 position-relative" id="about-services">
+<section class="about-fields pt-5 pb-5 about-us-bg z-3 position-relative" id="about-services">
   <div class="container-xxl">
     <div class="section-header mb-5  wow fadeInUp" data-wow-delay="0.1s">
       <h2 class="section-title">NGÀNH NGHỀ KINH DOANH</h2>

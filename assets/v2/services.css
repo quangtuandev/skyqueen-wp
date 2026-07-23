@@ -1,0 +1,431 @@
+/*
+======================================
+[ Service Page Grid Layout Stylesheet ]
+======================================
+*/
+
+.page-service {
+  background-color: #F8FAFC;
+  padding: 0px;
+  position: relative;
+  overflow-x: clip;
+}
+
+.services-grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid #E2E8F0;
+  border-left: 1px solid #E2E8F0;
+  margin-bottom: 60px;
+  gap: 0;
+}
+
+/* Hide CSS borders when JS dynamic grid line drawer is active (desktop/tablet) */
+@media (min-width: 576px) {
+  .services-grid-container.js-grid-drawn {
+    border-top: none;
+    border-left: none;
+  }
+
+  .services-grid-container.js-grid-drawn .services-grid-item {
+    border: none !important;
+  }
+}
+
+/* Grid Items General */
+.services-grid-item {
+  background-color: #FFFFFF;
+  margin: 6px;
+  border: 1px solid #E2E8F0;
+  /* Fallback border around cards */
+  padding: 32px;
+  position: relative;
+  transition: background-color 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-decoration: none !important;
+  color: inherit !important;
+}
+
+.services-grid-item:focus {
+  outline: none;
+}
+
+/* Header Block (spans 2 columns) */
+.services-grid-item.header-block {
+  grid-column: span 2;
+  justify-content: center;
+  z-index: 9;
+  background-color: #F8FAFC;
+}
+
+
+/* Service Card Interactive Hover & Styles */
+.service-card-v2:hover {
+  background-color: #F8FAFC;
+}
+
+.service-card-v2__icon-wrap {
+  width: 56px;
+  height: 56px;
+  background-color: #0E1840;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 28px;
+  font-size: 26px;
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), background-color 0.3s ease;
+}
+
+.service-card-v2:hover .service-card-v2__icon-wrap {
+  transform: scale(1.08);
+  background-color: #233D9B;
+}
+
+.service-card-v2__title {
+  font-size: 18px;
+  font-weight: 500;
+  color: #020617;
+  line-height: 28px;
+  margin-bottom: 12px;
+  transition: color 0.3s ease;
+}
+
+.service-card-v2:hover .service-card-v2__title {
+  color: #233D9B;
+}
+
+.service-card-v2__desc {
+  font-weight: 400;
+  color: #1E293B;
+  margin: 0;
+}
+
+/* CTA Block Style */
+.services-grid-item.cta-block {
+  background-color: #233D9B;
+  color: #FFFFFF !important;
+  justify-content: space-between;
+  min-height: 250px;
+}
+
+.services-grid-item.cta-block:hover {
+  background-color: #3E69FA;
+}
+
+.cta-text {
+  font-size: 24px;
+  font-weight: 500;
+  text-transform: uppercase;
+  line-height: 1.4;
+  display: block;
+}
+
+.cta-arrow-btn {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 64px;
+  height: 64px;
+  background-color: #EF4444;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  transition: background-color 0.3s ease;
+}
+
+.cta-arrow-btn span {
+  display: inline-block;
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.services-grid-item.cta-block:hover .cta-arrow-btn {
+  background-color: #DC2626;
+}
+
+.services-grid-item.cta-block:hover .cta-arrow-btn span {
+  transform: translate(4px, -4px);
+}
+
+/* Contact Form Section Styling */
+.service-contact-section {
+  max-width: 800px;
+  margin: 40px auto 0;
+  padding: 0 15px;
+}
+
+.service-contact-section .box-contact {
+  background-color: #FFFFFF;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+/* RESPONSIVE BREAKPOINTS */
+
+@media (max-width: 991.98px) {
+  .services-grid-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .services-grid-item.header-block {
+    grid-column: span 2;
+  }
+
+  .services-grid-deco-bottom {
+    grid-template-columns: repeat(2, 1fr);
+    margin-top: -60px;
+  }
+
+  .services-grid-title {
+    font-size: 30px;
+  }
+
+  .services-grid-item {
+    padding: 36px 30px;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .services-grid-container {
+    grid-template-columns: 1fr;
+    border: none;
+    width: auto;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 40px;
+  }
+
+  .services-grid-item.header-block {
+    grid-column: span 1;
+    border: none !important;
+    background-color: transparent !important;
+    margin: 0 0 24px 0;
+    padding: 0;
+  }
+
+  .services-grid-item {
+    margin: 12px 0;
+    border: 1px solid #E2E8F0 !important;
+    border-radius: 8px;
+    padding: 30px 24px;
+  }
+
+  .services-grid-deco-bottom {
+    display: none;
+  }
+
+  .services-grid-title {
+    font-size: 24px;
+  }
+
+  .cta-text {
+    font-size: 20px;
+  }
+}
+
+.max-width-md {
+  max-width: 1096px;
+}
+
+.btn-theme {
+  background: var(--Colors-Secondary-600---Base, #EC3138);
+  min-width: 64px;
+  min-height: 64px;
+  opacity: 1;
+  gap: 10px;
+  padding-top: 18px;
+  padding-right: 24px;
+  padding-bottom: 18px;
+  padding-left: 24px;
+  border-radius: 0px;
+  color: #FFF;
+}
+
+.btn-theme:hover {
+  color: #FFF;
+  background-color: #F43F5E;
+}
+
+/* Service Page Hero/Banner Styles */
+.service-hero {
+  background-color: #FFFFFF;
+  padding: 80px 0 0 0;
+  position: relative;
+}
+
+.service-hero__header {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.service-hero__title.services__title {
+  font-size: 48px;
+  line-height: 56px;
+  font-weight: 700;
+  color: #0E1840 !important;
+  margin-top: 16px;
+  margin-bottom: 24px;
+  letter-spacing: -0.5px;
+}
+
+.service-hero__lead {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1E293B;
+  margin-bottom: 24px;
+  letter-spacing: 0.5px;
+}
+
+.service-hero__description {
+  font-size: 16px;
+  line-height: 28px;
+  color: #475569;
+  margin-bottom: 40px !important;
+}
+
+.service-hero .btn-theme {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 18px 32px;
+  min-height: auto;
+  border-radius: 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: none;
+}
+
+.service-hero .btn-theme:hover {
+  background-color: #233D9B;
+  color: #FFFFFF;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(35, 61, 155, 0.15);
+}
+
+.service-hero .btn-theme .icon-arrow-up-right {
+  margin-left: 10px;
+  font-size: 16px;
+  transition: transform 0.3s ease;
+}
+
+.service-hero .btn-theme:hover .icon-arrow-up-right {
+  transform: translate(3px, -3px);
+}
+
+/* Sticky parent scene wrapper */
+.service-sticky-scene {
+  position: relative;
+}
+
+/* Earth Hero Image Container */
+.service-hero__banner-img-wrap {
+  margin-top: 60px;
+  position: relative;
+  background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
+  display: flex;
+  justify-content: center;
+}
+
+.service-hero__banner-img--earth {
+  width: 100%;
+  max-width: 1440px;
+  height: auto;
+  display: block;
+  z-index: 1;
+  animation: fadeInUpHero 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Sticky Container Overlay Layer */
+.service-hero__sticky-container-wrap {
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+  position: absolute;
+  bottom: 7vh;
+  width: 100%;
+  left: 15px;
+}
+
+.service-hero__banner-img--container {
+  max-width: 1005px;
+  height: auto;
+  display: block;
+  animation: fadeInUpHero 1.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes fadeInUpHero {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 991.98px) {
+  .service-hero {
+    padding: 60px 0 0 0;
+  }
+
+  .service-hero__title.services__title {
+    font-size: 38px;
+    line-height: 44px;
+  }
+
+  .service-hero__lead {
+    font-size: 18px;
+  }
+
+  .service-hero__description {
+    font-size: 15px;
+    line-height: 26px;
+  }
+
+  .service-hero__banner-img--earth {
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .service-hero {
+    padding: 40px 0 0 0;
+  }
+
+  .service-hero__title.services__title {
+    font-size: 28px;
+    line-height: 34px;
+  }
+
+  .service-hero__lead {
+    font-size: 16px;
+  }
+
+  .service-hero__description {
+    font-size: 14px;
+    line-height: 22px;
+    margin-bottom: 30px !important;
+  }
+
+  .service-hero .btn-theme {
+    width: 100%;
+    padding: 16px 24px;
+  }
+
+  .service-hero__banner-img-wrap {
+    margin-top: 40px;
+  }
+}

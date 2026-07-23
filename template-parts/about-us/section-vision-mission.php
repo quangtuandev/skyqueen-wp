@@ -21,19 +21,19 @@ $mission_img = $mission_img_id ? wp_get_attachment_image_url($mission_img_id, 'f
 $mission_text = get_field('mission_text') ?: 'Cung cấp các giải pháp logistics tối ưu nhất, giúp khách hàng tiết kiệm tối đa chi phí và thời gian, nâng cao năng lực cạnh tranh trên thị trường toàn cầu. Đồng thời, kiến tạo môi trường làm việc hạnh phúc, phát triển bền vững cho toàn thể cán bộ nhân viên.';
 
 $values_img_id = get_field('values_img');
-$values_img = $values_img_id ? wp_get_attachment_image_url($values_img_id, 'full') : get_template_directory_uri() . '/assets/v2/about-us/services-3.jpg';
+$values_img = $values_img_id ? wp_get_attachment_image_url($values_img_id, 'full') : get_template_directory_uri() . '/assets/v2/about-us/giatricotloi.jpg';
 
 // We can support a custom list from the backend
 $custom_values = get_field('values_list');
 ?>
 
-<section class="about-vm py-5 text-white position-relative">
+<section class="about-vm pt-5 text-white position-relative bg-white z-3">
   <video autoplay loop muted playsinline class="w-100 about-vm_background">
     <source src="<?= esc_url(get_template_directory_uri() . '/assets/v2/about-us/optimized_bg.mp4') ?>" type="video/mp4">
   </video>
-  <div class="container-xxl py-4">
+  <div class="container-xxl pt-4">
     <div class="row justify-content-center about-vm_header">
-      <div class="col-lg-8 text-center z-1">
+      <div class="col-lg-8 text-center">
         <div class="services__intro-header">
           <span class="services__subtitle text-uppercase mb-2 text-white wow fadeInUp" data-wow-delay="0.1s">
             <span class="services__bullet"></span>
@@ -215,6 +215,7 @@ $custom_values = get_field('values_list');
       return rect;
     }
 
+    var bgTimer;
     function handleVmBackgroundSticky() {
       var section = document.querySelector('.about-vm');
       var header = document.querySelector('.about-vm_header');
@@ -224,12 +225,13 @@ $custom_values = get_field('values_list');
       var headerRect = header.getBoundingClientRect();
       var sectionRect = section.getBoundingClientRect();
 
-      var isPinned = (headerRect.top <= 100);
-      console.log('isPinned', isPinned);
-      console.log('headerRect.top', headerRect.top);
-      console.log('headerRect.bottom', headerRect.bottom);
+      var isPinned = (Math.floor(headerRect.top) <= 100);
+      
+      clearTimeout(bgTimer);
       if (isPinned) {
-        bg.classList.add('is-vm-bg-pinned');
+        bgTimer = setTimeout(function() {
+          bg.classList.add('is-vm-bg-pinned');
+        }, 10);
       } else {
         bg.classList.remove('is-vm-bg-pinned');
       }

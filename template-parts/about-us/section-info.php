@@ -10,15 +10,15 @@
  */
 ?>
 
-<section class="about-info pt-5 pb-5">
+<section class="about-info pt-5 pb-5 about-us-bg z-3 position-relative">
   <div class="container-xxl">
-    <div class="section-header mb-5">
+    <div class="section-header mb-5 wow fadeInUp" data-wow-delay="0.1s">
       <h2 class="section-title">THÔNG TIN CHUNG</h2>
     </div>
     
     <div class="row g-4">
       <!-- Card 1: Thông tin định danh -->
-      <div class="col-lg-4 col-md-6">
+      <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
         <div class="about-info-card bg-white p-3 h-100 rounded-0 border-0 d-flex flex-column">
           <div class="about-info-card__icon-wrap mb-4 d-flex align-items-center justify-content-center rounded-0">
             <span class="icon-certificate text-white fs-3"></span>
@@ -42,7 +42,7 @@
       </div>
       
       <!-- Card 2: Thông tin thuế -->
-      <div class="col-lg-4 col-md-6">
+      <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
         <div class="about-info-card bg-white p-3 h-100 rounded-0 border-0 d-flex flex-column">
           <div class="about-info-card__icon-wrap mb-4 d-flex align-items-center justify-content-center rounded-0">
             <span class="icon-data text-white fs-3"></span>
@@ -70,7 +70,7 @@
       </div>
       
       <!-- Card 3: Thông tin liên hệ -->
-      <div class="col-lg-4 col-md-6 mx-auto">
+      <div class="col-lg-4 col-md-6 mx-auto wow fadeInUp" data-wow-delay="0.6s">
         <div class="about-info-card bg-white p-3 h-100 rounded-0 border-0 d-flex flex-column">
           <div class="about-info-card__icon-wrap mb-4 d-flex align-items-center justify-content-center rounded-0">
             <span class="icon-pin text-white fs-3"></span>

@@ -6,6 +6,9 @@
 .about-us-page-wrap {
   background-color: #F8FAFC;
 }
+.about-us-bg {
+  background-color: #F8FAFC;
+}
 
 .about-us-page-wrap .section-title {
   font-size: 24px;
@@ -24,13 +27,17 @@
   font-weight: 400;
 
 }
-
-
+.about-hero {
+  z-index: 0;
+}
 .about-hero__tagline {
-
-  font-size: 18px;
+  font-size: 20px;
   line-height: 1.7;
-  color: #334155 !important;
+  color: #020617 !important;
+}
+.row.about-hero__illustration {
+    top: -120px;
+    position: relative;
 }
 
 .about-hero__illustration img {
@@ -51,26 +58,16 @@
   color: #0F172A !important;
 }
 
-.about-overview__highlight {
-  background-color: #EFF6FF;
-  border-left: 4px solid #233D9B;
-  transition: transform 0.3s ease;
-}
-
-.about-overview__highlight:hover {
-  transform: scale(1.02);
+.about-overview__description {
+  color: #1E293B !important;
 }
 
 .about-overview__highlight-text {
-
-  color: #1E3A8A;
+  color: #233D9B;
   font-size: 16px;
 }
 
 /* Info Cards */
-.about-info {
-  background-color: #F1F5F9;
-}
 
 .about-info-card {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -172,10 +169,15 @@
 }
 .about-vm {
   position: relative;
+  margin-bottom: 128px;
 }
 .about-vm_background {
   position: absolute;
   top: 0;
+}
+.about-vm_background {
+  object-fit: cover;
+  max-height: 75vh;
 }
 .about-vm_background.is-vm-bg-pinned {
   position: sticky !important;
@@ -250,14 +252,13 @@
 @media (min-width: 768px) {
   .about-vm__blocks {
     position: relative;
-    padding-bottom: 80vh;
   }
 
   .about-vm .row.justify-content-center {
     position: -webkit-sticky !important;
     position: sticky !important;
     top: 100px !important;
-    z-index: 10;
+    z-index: 1;
     transition: top 0.3s ease;
   }
 
@@ -289,6 +290,28 @@
 
   .vision-mission-card:nth-child(3) {
     z-index: 3;
+  }
+
+  /* Sticky Hero Section */
+  .about-hero {
+    position: -webkit-sticky !important;
+    position: sticky !important;
+    top: 100px !important;
+    z-index: 0;
+    transition: top 0.3s ease;
+  }
+
+  /* Offset adaptation when main header is hidden */
+  .header.is-hidden ~ .about-us-page-wrap .about-hero {
+    top: 20px !important;
+  }
+
+  /* Elevate the next section to overlap and scroll over the sticky hero */
+  .about-overview {
+    background-color: #F8FAFC !important;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 -15px 30px -15px rgba(0, 0, 0, 0.12);
   }
 }
 
